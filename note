@@ -1,0 +1,32 @@
+function rotateMatrix90(matrix, imageWidth, imageHeight) {
+  const [a, b, c, d, tx, ty] = matrix;
+
+  const a2 = 0, b2 = 1, c2 = -1, d2 = 0;
+  const aNew = a * a2 + c * b2;
+  const bNew = b * a2 + d * b2;
+  const cNew = a * c2 + c * d2;
+  const dNew = b * c2 + d * d2;
+
+  const txNew = imageHeight - ty;
+  const tyNew = tx;
+
+  return [aNew, bNew, cNew, dNew, txNew, tyNew];
+}
+
+var arr = [1, 0, 0, 1, 150, 30];
+
+var arr1 = rotateMatrix90(arr, 300, 300);
+
+console.log(arr1)
+
+var arr2 = rotateMatrix90(arr1, 300, 300);
+
+console.log(arr2)
+
+var arr3 = rotateMatrix90(arr2, 300, 300);
+
+console.log(arr3)
+
+var arr4 = rotateMatrix90(arr3, 300, 300);
+
+console.log(arr4)
