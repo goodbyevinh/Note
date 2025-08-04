@@ -30,3 +30,27 @@ console.log(arr3)
 var arr4 = rotateMatrix90(arr3, 300, 300);
 
 console.log(arr4)
+
+
+function rotateMatrix90(matrixArray, imageWidth, imageHeight) {
+  const matrix = new DOMMatrix([
+    matrixArray[0], // a
+    matrixArray[1], // b
+    matrixArray[2], // c
+    matrixArray[3], // d
+    matrixArray[4], // e (tx)
+    matrixArray[5]  // f (ty)
+  ]);
+
+  const rotate90 = new DOMMatrix().rotate(90); 
+
+  const result = rotate90.multiply(matrix);
+
+  const newTx = imageHeight - matrix.f;
+  const newTy = matrix.e;
+
+  result.e = newTx;
+  result.f = newTy;
+
+  return [result.a, result.b, result.c, result.d, result.e, result.f];
+}
